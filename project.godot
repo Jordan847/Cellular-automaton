@@ -20,7 +20,11 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1000
 window/size/viewport_height=1000
 window/size/resizable=false
-window/vsync/vsync_mode=0
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [rendering]
 

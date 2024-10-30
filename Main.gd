@@ -12,16 +12,17 @@ func create_cell(pos: Vector2, size: int, color: Color):
 
 
 func create_grid():
-	for l in range(40):
-		for w in range(40):
+	for y in range(40):
+		for x in range(40):
 			var cell_color
 			if randf() > 0.5:
 				cell_color = 'white'
 			else:
 				cell_color = 'black'
-			create_cell(Vector2(w*25,l*25),25,cell_color)
-		
-		
+			create_cell(Vector2(x*25,y*25),25,cell_color)
+
+
+
 func get_random_color():
 	var random_color = Color(
 		randi_range(0, 255) / 255.0,
@@ -34,28 +35,31 @@ func get_cell_at_position(position: Vector2):
 		var cell = $Cells.get_child(40 * position.y + position.x)
 		return cell
 
-
-
-func print_children():
-	var w : int
-	var b : int
-	for i in range($Cells.get_child_count()):
-		var cell = $Cells.get_child(i)
-		
-		
-		
-		if cell.get_color() == Color.WHITE:
-			w+=1
-		else:
-			b+=1
-		
+func check_if_cell_is_white(position: Vector2) -> int: # this function is mainly for the get_cell_neighbors function
+	if get_cell_at_position(position).get_color() == Color.WHITE:
+		return 1
+	return 0
 	
-		
+func get_cell_neighbor_count(position: Vector2) -> int:
+	var sum: int = 0
+	for y in range(position.y - 1, position.y + 1):
+		for x in range(position.x -1, position.x + 1):
+			if x == position.x and y == position.y:
+				print("current cell position")
+				pass
+			else:
+				sum += check_if_cell_is_white(position)
+				#print(sum)
+	return sum
+
 	
+
 
 func _ready():
 	randomize()
 	create_grid()
+	#for i in range(get_cell_neighbor_count(Vector2(1,1))):
+		#get_cell_at_position(Vector2(randi_range(0,39),randi_range(0,39))).set_color(Color.RED)
 	
 	
 
@@ -64,6 +68,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	get_cell_at_position(Vector2(randi_range(0,39), randi_range(0,39))).set_color(get_random_color())
-
+	#var next_board: Array[Color]
+	print("hello")
+	
 	
