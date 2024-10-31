@@ -22,7 +22,6 @@ func create_grid():
 				cell_color = 'white'
 			else:
 				cell_color = 'black'
-			cell_color = get_random_color()
 			create_cell(Vector2i(x*25,y*25),25,cell_color)
 
 func destroy_grid():
@@ -83,10 +82,7 @@ func get_cell_neighbor_count(position: Vector2i) -> int:
 				print("current cell position")
 			else:
 				sum += check_if_cell_is_white(Vector2i(x,y))
-				if check_if_cell_is_white(Vector2i(x,y)) == 1:
-					get_cell_at_position(Vector2i(x,y)).set_color(Color.GREEN)
-				else:
-					get_cell_at_position(Vector2i(x,y)).set_color(Color.RED)
+
 	return sum
 
 	
@@ -107,5 +103,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var next_board: Array[Color]
-	create_grid()
+	
 	
