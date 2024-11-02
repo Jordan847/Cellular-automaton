@@ -1,5 +1,8 @@
-[gd_scene format=3 uid="uid://jr82nvfo25ma"]
+[gd_scene load_steps=2 format=3 uid="uid://jr82nvfo25ma"]
+
+[ext_resource type="Script" path="res://cell.gd" id="1_bdfoh"]
 
 [node name="Cell" type="ColorRect"]
 offset_right = 1.0
 offset_bottom = 1.0
+script = ExtResource("1_bdfoh")
