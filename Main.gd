@@ -20,7 +20,7 @@ func create_grid():
 		for x in range(40):
 			
 			var cell_color
-			if randf() > 0.90:
+			if randf() > 0.85:
 				cell_color = 'white'
 			else:
 				cell_color = 'black'
@@ -126,13 +126,15 @@ func update_board_state(board) -> void:
 		i+=1
 		
 		
-
+@export var generate_new_grid: bool = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 		if $TickRate.is_stopped():
 			var board: Array[Color] = get_next_board_state()
 			update_board_state(board)
 			$TickRate.start()
-	
+		if generate_new_grid:
+			create_grid()
+			generate_new_grid = false
 	
 	

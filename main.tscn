@@ -8,4 +8,5 @@ script = ExtResource("1_t05ye")
 [node name="Cells" type="Node2D" parent="."]
 
 [node name="TickRate" type="Timer" parent="."]
+wait_time = 0.15
 one_shot = true
